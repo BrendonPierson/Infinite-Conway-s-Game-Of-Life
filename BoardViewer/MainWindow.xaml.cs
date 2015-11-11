@@ -3,6 +3,7 @@ using ConwaysGameOfLife;
 using System.Windows.Threading;
 using System;
 using Xceed.Wpf.Toolkit;
+using System.Collections.Generic;
 
 namespace BoardViewer
 {
@@ -16,7 +17,12 @@ namespace BoardViewer
 
         public MainWindow()
         {
-            currentBoard = new FauxGameOfLife();
+            List<Cell> alive = new List<Cell>();
+            alive.Add(new Cell(1, 2));
+            alive.Add(new Cell(1, 4));
+            alive.Add(new Cell(1, 3));
+            alive.Add(new Cell(0, 1));
+            currentBoard = new GameBoard(alive);
             dispatcherTimer = new DispatcherTimer();
 
             InitializeComponent();

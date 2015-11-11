@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoardViewer", "BoardViewer\
 		{84F60520-70B5-4789-95C0-71C412703E69} = {84F60520-70B5-4789-95C0-71C412703E69}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConwaysTests", "ConwaysTests\ConwaysTests.csproj", "{3FDF7959-BBF0-419B-932E-F23EA3B5547C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +26,10 @@ Global
 		{2EE3DF00-A49D-4B03-9409-0B37814B7B5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2EE3DF00-A49D-4B03-9409-0B37814B7B5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2EE3DF00-A49D-4B03-9409-0B37814B7B5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FDF7959-BBF0-419B-932E-F23EA3B5547C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FDF7959-BBF0-419B-932E-F23EA3B5547C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FDF7959-BBF0-419B-932E-F23EA3B5547C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FDF7959-BBF0-419B-932E-F23EA3B5547C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
