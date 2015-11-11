@@ -11,7 +11,6 @@ namespace ConwaysGameOfLife
         public CellsRange Range { get; set; }
         public List<Cell> AliveCells { get; set; }
         private List<Cell> ressurectionCellCandidates;
-        public List<Cell> RessurectionCellCandidates { get { return ressurectionCellCandidates; } }
 
         public GameBoard()
         {
@@ -52,7 +51,7 @@ namespace ConwaysGameOfLife
             neighbors.Add(new Cell (cell.Row + 1, cell.Col - 1 ));
             neighbors.Add(new Cell (cell.Row + 1, cell.Col ));
             neighbors.Add(new Cell (cell.Row + 1, cell.Col + 1 ));
-            RessurectionCellCandidates.AddRange(neighbors);
+            ressurectionCellCandidates.AddRange(neighbors);
             return neighbors;
         }
 
@@ -92,17 +91,10 @@ namespace ConwaysGameOfLife
             }
         }
 
-        // kill cells that are marked
+        // kill cells that are marked using filter
         public void RemoveCellsThatDied()
         {
-            for(var cell = 0; cell < AliveCells.Count; cell++)
-            {
-                if (AliveCells[cell].MarkForChange)
-                {
-                    AliveCells[cell].MarkForChange = false;
-                    AliveCells.Remove(AliveCells[cell]);
-                }
-            }
+            AliveCells = AliveCells.FindAll(delegate (Cell cell) { return !cell.MarkForChange; });
         }
 
         // Apply the four rules
@@ -123,7 +115,7 @@ namespace ConwaysGameOfLife
         {
             Range = new CellsRange(AliveCells);
             List<List<bool>> cells = new List<List<bool>>();
-            for(var row = 0; row <= Range.RowRange; row++)
+            for(var row = 0; row < Range.RowRange; row++)
             {
                 cells.Add(GenerateRow(Range.ColRange));
             }
@@ -137,7 +129,7 @@ namespace ConwaysGameOfLife
         public List<bool> GenerateRow(int size)
         {
             List<bool> row = new List<bool>();
-            for (int i = 0; i <= size; i++)
+            for (int i = 0; i < size; i++)
             {
                 row.Add(false);
             }

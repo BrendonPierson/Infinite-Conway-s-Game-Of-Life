@@ -143,11 +143,33 @@ namespace ConwaysTests
             Assert.AreEqual(3, board.AliveCells.Count);
         }
 
-        // Next Steps:
-            // 1. Apply kill rules to living cells
-            // 2. Bring cells to life according to rule of 3
-                // When getting the living neighbors count, all neighbor coordinates of the living cell should be pushed to a data structure
-                // When the neighbors count is done for all living cells, if any coordinate pairs appear 3 times, they are pushed to the aliveCells list
+        [TestMethod]
+        public void BasicBlinkerOscilatesOnce()
+        {
+            List<Cell> alive = new List<Cell>();
+            alive.Add(new Cell(0, 0));
+            alive.Add(new Cell(1, 0));
+            alive.Add(new Cell(2, 0));
+            GameBoard board = new GameBoard(alive);
+            board.Tick();
+           CollectionAssert.AreNotEqual(alive, board.AliveCells);
+        }
 
+        [TestMethod]
+        public void BasicBlinkerOscilatesTwoTimes()
+        {
+            List<Cell> alive = new List<Cell>();
+            alive.Add(new Cell(0, 0));
+            alive.Add(new Cell(1, 0));
+            alive.Add(new Cell(2, 0));
+            GameBoard board = new GameBoard(alive);
+            List<Cell> aliveNew = new List<Cell>();
+            aliveNew.Add(new Cell(1, 0));
+            aliveNew.Add(new Cell(0, 0));
+            aliveNew.Add(new Cell(2, 0));
+            board.Tick();
+            board.Tick();
+            CollectionAssert.AreEqual(aliveNew, board.AliveCells);
+        }
     }
 }
