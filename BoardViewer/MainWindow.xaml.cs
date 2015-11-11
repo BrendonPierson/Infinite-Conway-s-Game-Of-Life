@@ -18,10 +18,13 @@ namespace BoardViewer
         public MainWindow()
         {
             List<Cell> alive = new List<Cell>();
+            alive.Add(new Cell(0, 0));
+            alive.Add(new Cell(1, 0));
+            alive.Add(new Cell(2, 0));
+            alive.Add(new Cell(2, 1));
             alive.Add(new Cell(1, 2));
-            alive.Add(new Cell(1, 4));
-            alive.Add(new Cell(1, 3));
-            alive.Add(new Cell(0, 1));
+            alive.Add(new Cell(2, 3));
+            alive.Add(new Cell(3, 2));
             currentBoard = new GameBoard(alive);
             dispatcherTimer = new DispatcherTimer();
 

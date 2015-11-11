@@ -75,6 +75,19 @@ namespace ConwaysTests
         }
 
         [TestMethod]
+        public void SumOfNeighborsFour()
+        {
+            List<Cell> alive = new List<Cell>();
+            alive.Add(new Cell(0, 0));
+            alive.Add(new Cell(1, 0));
+            alive.Add(new Cell(2, 0));
+            alive.Add(new Cell(2, 1));
+            alive.Add(new Cell(1, 2));
+            GameBoard board = new GameBoard(alive);
+            Assert.AreEqual(3, board.NeighborsAliveCount(board.AliveCells[3]));
+        }
+
+        [TestMethod]
         public void CanApplyKillRules()
         {
             List<Cell> alive = new List<Cell>();

@@ -99,6 +99,7 @@ namespace ConwaysGameOfLife
             {
                 if (AliveCells[cell].MarkForChange)
                 {
+                    AliveCells[cell].MarkForChange = false;
                     AliveCells.Remove(AliveCells[cell]);
                 }
             }
