@@ -19,9 +19,9 @@ namespace BoardViewer
         {
             List<Cell> alive = new List<Cell>();
             // Blinker
-            alive.Add(new Cell(0, 0));
-            alive.Add(new Cell(0, 1));
-            alive.Add(new Cell(0, 2));
+            //alive.Add(new Cell(0, 0));
+            //alive.Add(new Cell(0, 1));
+            //alive.Add(new Cell(0, 2));
 
             // GLider
             //alive.Add(new Cell(0, 1));
@@ -30,8 +30,27 @@ namespace BoardViewer
             //alive.Add(new Cell(2, 1));
             //alive.Add(new Cell(2, 2));
 
-            //alive.Add(new Cell(2, 3));
-            //alive.Add(new Cell(3, 2));
+            // Square
+            //alive.Add(new Cell(0, 0));
+            //alive.Add(new Cell(0, 1));
+            //alive.Add(new Cell(1, 1));
+
+            //Pentadecathlon
+            alive.Add(new Cell(1, 0));
+            alive.Add(new Cell(1, 1));
+            alive.Add(new Cell(0, 2));
+            alive.Add(new Cell(2, 2));
+            alive.Add(new Cell(1, 3));
+            alive.Add(new Cell(1, 4));
+            alive.Add(new Cell(1, 5));
+            alive.Add(new Cell(1, 6));
+            alive.Add(new Cell(0, 7));
+            alive.Add(new Cell(2, 7));
+            alive.Add(new Cell(1, 8));
+            alive.Add(new Cell(1, 9));
+
+
+
             currentBoard = new GameBoard(alive);
             dispatcherTimer = new DispatcherTimer();
 

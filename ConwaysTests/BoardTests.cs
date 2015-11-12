@@ -141,18 +141,39 @@ namespace ConwaysTests
             board.ApplyKillRules(board.AliveCells[0], 4);
             board.RemoveCellsThatDied();
             Assert.AreEqual(3, board.AliveCells.Count);
+            //board.AliveCells = board.RemoveCellsThatDied();
+            //Assert.AreEqual(3, board.AliveCells.Count);
         }
 
         [TestMethod]
-        public void BasicBlinkerOscilatesOnce()
+        public void BasicBlinkerOscilates()
         {
             List<Cell> alive = new List<Cell>();
             alive.Add(new Cell(0, 0));
             alive.Add(new Cell(1, 0));
             alive.Add(new Cell(2, 0));
             GameBoard board = new GameBoard(alive);
+            List<Cell> aliveNew = new List<Cell>();
+            aliveNew.Add(new Cell(1, 0));
+            aliveNew.Add(new Cell(0, 0));
+            aliveNew.Add(new Cell(2, 0));
             board.Tick();
-           CollectionAssert.AreNotEqual(alive, board.AliveCells);
+            CollectionAssert.AreNotEqual(aliveNew, board.AliveCells);
+            board.Tick();
+            CollectionAssert.AreEqual(aliveNew, board.AliveCells);
+        }
+
+        [TestMethod]
+        public void SqaureStaysASquare()
+        {
+            List<Cell> alive = new List<Cell>();
+            alive.Add(new Cell(0, 0));
+            alive.Add(new Cell(0, 1));
+            alive.Add(new Cell(1, 0));
+            alive.Add(new Cell(1, 1));
+            GameBoard board = new GameBoard(alive);
+            board.Tick();
+            Assert.AreEqual(4, board.AliveCells.Count);
         }
 
         [TestMethod]

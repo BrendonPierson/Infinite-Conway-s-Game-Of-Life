@@ -34,6 +34,9 @@ namespace ConwaysGameOfLife
                 if (AliveCells.Contains(neighbor))
                 {
                     aliveCount++;
+                } else
+                {
+                    ressurectionCellCandidates.Add(neighbor);
                 }
             }
             return aliveCount;
@@ -51,7 +54,6 @@ namespace ConwaysGameOfLife
             neighbors.Add(new Cell (cell.Row + 1, cell.Col - 1 ));
             neighbors.Add(new Cell (cell.Row + 1, cell.Col ));
             neighbors.Add(new Cell (cell.Row + 1, cell.Col + 1 ));
-            ressurectionCellCandidates.AddRange(neighbors);
             return neighbors;
         }
 
@@ -92,9 +94,10 @@ namespace ConwaysGameOfLife
         }
 
         // kill cells that are marked using filter
-        public void RemoveCellsThatDied()
+        public int RemoveCellsThatDied()
         {
-            AliveCells = AliveCells.FindAll(delegate (Cell cell) { return !cell.MarkForChange; });
+            //return AliveCells.FindAll(delegate (Cell cell) { return !cell.MarkForChange; });
+            return AliveCells.RemoveAll(x => x.MarkForChange == true);
         }
 
         // Apply the four rules
@@ -105,6 +108,7 @@ namespace ConwaysGameOfLife
                 int liveNeighbors = NeighborsAliveCount(AliveCells[i]);
                 ApplyKillRules(AliveCells[i], liveNeighbors);
             }
+            //AliveCells = RemoveCellsThatDied();
             RemoveCellsThatDied();
             CheckBringCellToLife(ressurectionCellCandidates);
             ressurectionCellCandidates.Clear();
